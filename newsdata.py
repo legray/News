@@ -27,17 +27,13 @@ cur.execute(
           )
 results = cur.fetchall()
 
-print ("QUERY 1")
-print(results)
-print("|         Article_Name         | Views |")
-print("|------------------------------|-------|")
+print ("QUERY 1 - Popular Articles")
 for item in results:
-    print("|", item[0]." "*(30-len(item[0])),"|",
-          item[1]," "*(7-len(str[1])),"|")
+    print("[] - [] Views".format(item[0], item[1]))
 print("--------------------------------------------")
 
-#New Command, Executes and prints out results of question 2 in Logs
-#Analysis project.
+#New Command, Executes and prints out results of question 2 for Authors
+#Views in Analysis project.
 cur.execute (
     "SELECT authors.name AS Authors_Name, COUNT (log.time) AS Views "
     "FROM authors, articles, log "
@@ -47,12 +43,13 @@ cur.execute (
            )
 results = cur.fetchall()
 
-print ("QUERY 2")
-print(results)
+print ("QUERY 2 - Authors Views")
+for item in results:
+    print("[]  [] Views".format(item[0], item[1]))
 print("--------------------------------------------")
 
 #New Command, Executes and prints out results of question 3 in Logs
-#Analysis project.
+#Analysis project showing days where log errors greater than 1%.
 cur.execute (
     "SELECT * "
     "FROM ( "
@@ -67,8 +64,9 @@ cur.execute (
 
 results = cur.fetchall()
 
-print ("QUERY 3")
-print(results)
+print ("QUERY 3 - Days Errors > 1%")
+for item in results:
+    print("[]  [] Errors".format(item[0], item[1]))
 print("--------------------------------------------")
 
 conn.close()
