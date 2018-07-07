@@ -35,18 +35,18 @@ print("--------------------------------------------")
 
 #New Command, Executes and prints out results of question 2 for Authors
 #Views in Analysis project.
-cur.execute (
+cur.execute(
     "SELECT authors.name AS Authors_Name, COUNT (log.time) AS Views "
     "FROM authors, articles, log "
     "WHERE articles.author = authors.id "
     "GROUP BY authors.name "
     "ORDER BY Views DESC "
-           )
+)
 results = cur.fetchall()
 
 print ("QUERY 2 - Authors Views")
 for item in results:
-     print("{} - {} Views".format(item[0], item[1]))
+      print("{} - {:,} Views".format(item[0], item[1]))
 print("--------------------------------------------")
 
 #New Command, Executes and prints out results of question 3 in Logs
